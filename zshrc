@@ -1,8 +1,20 @@
 # zsh
-alias zsh_reload='source ~/.zshrc'
+alias zsh_reload='source "$HOME/.zshrc"'
+
+HISTFILE="$HOME/.zsh_history"
+HISTSIZE=100000
+SAVEHIST=100000
+
+setopt extended_history
+setopt hist_expire_dups_first
+setopt hist_ignore_space
+setopt hist_verify
+setopt inc_append_history
+
+alias h='history -i'
 
 # pure theme
-fpath+=(~/.zsh-pure)
+fpath+=("$HOME/.zsh-pure")
 autoload -U promptinit; promptinit
 prompt pure
 
