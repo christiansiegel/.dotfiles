@@ -18,6 +18,9 @@ fpath+=("$HOME/.zsh-pure")
 autoload -U promptinit; promptinit
 prompt pure
 
+# vars
+EDITOR=vim
+
 # git
 alias g='git'
 alias ga='git add'
@@ -36,6 +39,7 @@ alias gco='git checkout'
 alias gcom='git checkout $(git_main_branch)'
 alias gcob='git checkout -b'
 alias gd='git diff'
+alias gdm='git diff $(git_main_branch)'
 alias gdca='git diff --cached'
 alias gl='git log --graph --oneline --decorate'
 alias gla='git log --graph --oneline --decorate --all'
@@ -44,6 +48,8 @@ alias gpo='git push origin $(current_branch)'
 alias grb='git rebase'
 alias grba='git rebase --abort'
 alias grbc='git rebase --continue'
+alias grbi='git rebase --interactive'
+alias grbim='git rebase --interactive $(git_main_branch)'
 alias gr='git reset'
 alias gr!='git reset --hard'
 alias gs='git status'
@@ -77,7 +83,7 @@ alias arl='arc land'
 
 # bazel
 alias bt='bazel test ...'
-alias btnc='bayel test --cache_test_results=no ...'
+alias btnc='bazel test --cache_test_results=no ...'
 
 # gazelle
 alias gz='gazelle'
