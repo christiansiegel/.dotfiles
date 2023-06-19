@@ -86,7 +86,9 @@ function git_repo_root() {
 }
 
 # arcanist
-arc set-config editor vim > /dev/null
+if command -v arc &> /dev/null; then
+  arc set-config editor vim > /dev/null
+fi
 
 alias ard='arc diff'
 alias ardnu='arc diff --nounit'
