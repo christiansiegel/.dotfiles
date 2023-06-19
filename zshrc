@@ -20,6 +20,13 @@ fpath+=("$HOME/.zsh-pure")
 autoload -U promptinit; promptinit
 prompt pure
 
+# zsh-syntax-highlighting
+if [[ $OSTYPE == 'darwin'* ]]; then
+  source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+else
+  source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+fi
+
 # git
 GIT_EDITOR=VIM
 
