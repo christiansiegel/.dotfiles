@@ -95,3 +95,5 @@ alias gzc='gazelle && (cd $(git_repo_root) && git add **/*.BAZEL) && git commit 
 
 # dotfiles
 alias cddot='cd $HOME/.dotfiles'
+alias push_dotfiles='(cddot && gaa && gcm update && gpo)'
+alias pull_dotfiles='(cddot && gcom && gpr) && (cd $HOME && rcup -vf rcrc && rcup -vf) && zsh_reload'
