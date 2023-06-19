@@ -5,6 +5,8 @@ HISTFILE="$HOME/.zsh_history"
 HISTSIZE=100000
 SAVEHIST=100000
 
+EDITOR=vim
+
 setopt extended_history
 setopt hist_expire_dups_first
 setopt hist_ignore_space
@@ -18,15 +20,15 @@ fpath+=("$HOME/.zsh-pure")
 autoload -U promptinit; promptinit
 prompt pure
 
-# vars
-EDITOR=vim
-
 # git
+GIT_EDITOR=VIM
+
 alias g='git'
 alias ga='git add'
 alias gaa='git add --all'
 alias gau='git add --update'
 alias gap='git add --patch'
+alias gb='git branch'
 alias gcp='git cherry-pick'
 alias gcpb='git cherry-pick $(git rev-parse $1)'
 alias gcpa='git cherry-pick --abort'
@@ -77,7 +79,9 @@ function git_repo_root() {
 }
 
 # arcanist
-alias ard='ard diff'
+arc set-config editor vim > /dev/null
+
+alias ard='arc diff'
 alias ardnu='arc diff --nounit'
 alias arl='arc land'
 
@@ -88,3 +92,6 @@ alias btnc='bazel test --cache_test_results=no ...'
 # gazelle
 alias gz='gazelle'
 alias gzc='gazelle && (cd $(git_repo_root) && git add **/*.BAZEL) && git commit -m "gazelle"'
+
+# dotfiles
+alias cddot='cd $HOME/.dotfiles'
