@@ -15,6 +15,9 @@ setopt inc_append_history
 
 alias h='history -i'
 
+autoload -Uz compinit
+compinit
+
 # pure theme
 fpath+=("$HOME/.zsh-pure")
 autoload -U promptinit; promptinit
@@ -93,6 +96,8 @@ fi
 alias ard='arc diff'
 alias ardnu='arc diff --nounit'
 alias arl='arc land'
+alias art='arc tidy'
+alias arf='arc flow'
 
 # bazel
 alias bt='bazel test ...'
