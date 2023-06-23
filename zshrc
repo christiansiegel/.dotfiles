@@ -105,7 +105,7 @@ alias btnc='bazel test --cache_test_results=no ...'
 
 # gazelle
 alias gz='gazelle'
-alias gzc='gazelle && (cd $(git_repo_root) && git add **/*.BAZEL) && git commit -m "gazelle"'
+alias gzc='gazelle && (cd $(git_repo_root) && git add "**/BUILD.bazel") && git commit -m "gazelle"'
 
 # dotfiles
 alias cddot='cd $HOME/.dotfiles'
