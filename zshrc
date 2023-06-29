@@ -94,6 +94,7 @@ if command -v arc &> /dev/null; then
 fi
 
 alias ard='arc diff'
+alias arda='arc diff --autoland'
 alias ardnu='arc diff --nounit'
 alias arl='arc land'
 alias art='arc tidy'
