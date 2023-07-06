@@ -112,3 +112,6 @@ alias gzc='gazelle && (cd $(git_repo_root) && git add "**/BUILD.bazel") && git c
 alias cddot='cd $HOME/.dotfiles'
 alias push_dotfiles='(cddot && gaa && gcm update && gpo)'
 alias pull_dotfiles='(cddot && gcom && gpr) && (cd $HOME && rcup -vf rcrc && rcup -vf) && zsh_reload'
+
+# path
+[[ -d /home/user/go-repos/bin ]] && export PATH="/home/user/go-repos/bin:$PATH"
