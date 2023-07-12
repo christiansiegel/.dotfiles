@@ -115,3 +115,6 @@ alias pull_dotfiles='(cddot && gcom && gpr) && (cd $HOME && rcup -vf rcrc && rcu
 
 # path
 [[ -d /home/user/go-repos/bin ]] && export PATH="/home/user/go-repos/bin:$PATH"
+
+# k8s
+export KUBECONFIG=~/.kube/uconfig
