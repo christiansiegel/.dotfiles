@@ -40,7 +40,11 @@ alias gau='git add --update'
 alias gap='git add --patch'
 alias gb='git branch'
 alias gcp='git cherry-pick'
-alias gcpb='git cherry-pick $(git rev-parse $1)'
+function gcpb() {
+    local commit
+    commit=$(command git rev-parse --verify --end-of-options "${1:?usage: gcpb <revision>}^{commit}") || return
+    command git cherry-pick "$commit"
+}
 alias gcpa='git cherry-pick --abort'
 alias gcpc='git cherry-pick --continue'
 alias gc='git commit --verbose'
@@ -67,7 +71,11 @@ alias gr='git reset'
 alias gr!='git reset --hard'
 alias gs='git status'
 
-alias cdgr='cd $(git_repo_root)'
+function cdgr() {
+    local root
+    root=$(git_repo_root) || return
+    builtin cd -- "$root"
+}
 
 function current_branch() {
     command git rev-parse --abbrev-ref HEAD
