@@ -13,6 +13,7 @@ if output=$(HOME="$check_home" ZDOTDIR="$check_home" XDG_CONFIG_HOME="$check_hom
     arc() { return 0; }
     source "$1" || exit
     source "$1" || exit
+    dotfiles --help >/dev/null || exit
   ' check "$repo_dir/zshrc" 2>&1); then
   if [ -n "$output" ]; then
     printf '%s\n' "$output" >&2
