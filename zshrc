@@ -123,15 +123,16 @@ function current_branch() {
 }
 
 function git_main_branch() {
-  command git rev-parse --git-dir &>/dev/null || return
   local remote ref
+  # Resolve and verify the remote default in one Git call on the common path.
   for remote in origin upstream; do
-    ref=$(command git symbolic-ref --quiet "refs/remotes/$remote/HEAD") || continue
-    if command git show-ref -q --verify "$ref"; then
+    ref=$(command git rev-parse --verify --symbolic-full-name "refs/remotes/$remote/HEAD" 2>/dev/null) || continue
+    if [[ -n "$ref" && "$ref" != "refs/remotes/$remote/HEAD" ]]; then
       print -r -- "${ref#refs/remotes/$remote/}"
       return
     fi
   done
+  command git rev-parse --git-dir &>/dev/null || return
   for ref in refs/{heads,remotes/{origin,upstream}}/{main,master,trunk}; do
     if command git show-ref -q --verify "$ref"; then
       print -r -- "${ref:t}"
