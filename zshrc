@@ -19,16 +19,23 @@ autoload -Uz compinit
 compinit
 
 # pure theme
-fpath+=("$HOME/.zsh-pure")
-autoload -U promptinit; promptinit
-prompt pure
+if [[ -r "$HOME/.zsh-pure/prompt_pure_setup" ]]; then
+  fpath+=("$HOME/.zsh-pure")
+  autoload -U promptinit; promptinit
+  prompt pure
+fi
 
 # zsh-syntax-highlighting
-if [[ $OSTYPE == 'darwin'* ]]; then
-  source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-else
-  source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-fi
+for syntax_highlighting_file in \
+  /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh \
+  /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh \
+  /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh; do
+  if [[ -r "$syntax_highlighting_file" ]]; then
+    source "$syntax_highlighting_file"
+    break
+  fi
+done
+unset syntax_highlighting_file
 
 # git
 export GIT_EDITOR="$EDITOR"
