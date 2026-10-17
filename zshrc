@@ -13,7 +13,7 @@ function dotfiles() {
       '  cddot          Open the dotfiles repository.' \
       '  zsh_reload     Apply local shell configuration changes to this shell.' \
       '  pull_dotfiles  Pull updates, force relinking, and reload the shell.' \
-      '  push_dotfiles  Stage all changes, commit as update, and push.' \
+      '  push_dotfiles  Push existing dotfile commits.' \
       '  dotfiles -h    List all aliases and functions with descriptions.'
     return
   fi
@@ -278,8 +278,8 @@ alias gzc='gazelle && (cdgr && git add "**/BUILD.bazel") && git commit -m "gazel
 # @topic Dotfiles
 # @doc Change to the dotfiles repository.
 alias cddot='cd "$HOME/.dotfiles"'
-# @doc Stage all dotfile changes, commit as update, and push.
-alias push_dotfiles='(cddot && gaa && gcm update && gpo)'
+# @doc Push existing dotfile commits without staging or committing changes.
+alias push_dotfiles='(cddot && gpo)'
 # @doc Pull dotfiles, force relinking, and reload the shell configuration.
 alias pull_dotfiles='(cddot && gcom && gpr) && (cd "$HOME" && rcup -vf rcrc && rcup -vf) && zsh_reload'
 
