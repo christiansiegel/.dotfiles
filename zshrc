@@ -110,6 +110,13 @@ function grbiom() {
 }
 alias gr='git reset'
 alias gr!='git reset --hard'
+
+# Discard tracked changes and delete untracked files/directories; keep ignored files.
+function gclean() (
+  cdgr || return
+  command git reset --hard HEAD &&
+    command git clean -fd
+)
 alias gs='git status'
 alias gsf='git status -sb -uno --no-ahead-behind'
 
