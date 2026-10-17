@@ -41,6 +41,21 @@
     ```
 1. Install znazzy terminal theme (e.g. for iTerm2: https://github.com/sindresorhus/iterm2-snazzy)
 
+## Machine-specific settings
+
+Put settings that vary between machines in `~/.zshrc.local`. The shared
+`.zshrc` loads this optional file last, so it can override shared settings.
+Keep it outside this repository and do not add it with `mkrc`.
+
+For example, select a machine-specific Kubernetes configuration:
+
+```zsh
+export KUBECONFIG="$HOME/.kube/uconfig"
+```
+
+Without a local override, Kubernetes uses its normal configuration lookup.
+Machine-specific executable directories can also be added to `PATH` here.
+
 ## Adding new files to the project
 
 ```sh

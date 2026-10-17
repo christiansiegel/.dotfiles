@@ -1,3 +1,6 @@
+# Shared shell configuration. Put machine-specific settings in ~/.zshrc.local.
+# That optional file loads last; keep it outside Git (see README.md).
+
 # zsh
 alias zsh_reload='source "$HOME/.zshrc"'
 
@@ -136,14 +139,13 @@ alias cddot='cd $HOME/.dotfiles'
 alias push_dotfiles='(cddot && gaa && gcm update && gpo)'
 alias pull_dotfiles='(cddot && gcom && gpr) && (cd $HOME && rcup -vf rcrc && rcup -vf) && zsh_reload'
 
-# path
-[[ -d /home/user/go-repos/bin ]] && export PATH="/home/user/go-repos/bin:$PATH"
-
-# k8s
-export KUBECONFIG=~/.kube/uconfig
-
 export NVM_DIR="$HOME/.config/nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 [ -f "$HOME/.local/bin/env" ] && . "$HOME/.local/bin/env"
+
+# machine-specific settings
+if [[ -r "$HOME/.zshrc.local" ]]; then
+  source "$HOME/.zshrc.local"
+fi
