@@ -67,20 +67,47 @@ alias gcn!='git commit --verbose --no-edit --amend'
 alias gcm='git commit --verbose --message'
 alias gco='git checkout'
 alias gcom='git checkout "$(git_main_branch)"'
+
+# Update only origin's default branch, then switch directly to its latest state.
+function gcomu() {
+  local base current
+  base=$(git_main_branch) || return
+  current=$(command git symbolic-ref --quiet --short HEAD)
+
+  if [[ "$current" == "$base" ]]; then
+    command git fetch --no-tags origin "refs/heads/${base}:refs/remotes/origin/$base" || return
+    if ! command git merge-base --is-ancestor HEAD "refs/remotes/origin/$base"; then
+      print -u2 -r -- "Local $base has commits not on origin/$base; leaving it unchanged."
+      return 1
+    fi
+    command git merge --ff-only "refs/remotes/origin/$base"
+  elif command git show-ref -q --verify "refs/heads/$base"; then
+    command git fetch --no-tags origin "refs/heads/${base}:refs/heads/$base" || return
+    command git switch "$base"
+  else
+    command git fetch --no-tags origin "refs/heads/${base}:refs/remotes/origin/$base" || return
+    command git switch --track -c "$base" "origin/$base"
+  fi
+}
 alias gcob='git checkout -b'
 alias gd='git diff'
 alias gdm='git diff "$(git_main_branch)"'
 alias gdca='git diff --cached'
 alias gl='git log --graph --oneline --decorate'
 alias gla='git log --graph --oneline --decorate --all'
-alias gpr='git pull --rebase'
+alias gpr='git pull --rebase --no-tags'
 alias gpo='git push origin "$(current_branch)"'
 alias grb='git rebase'
 alias grba='git rebase --abort'
 alias grbc='git rebase --continue'
 alias grbi='git rebase --interactive'
 alias grbim='git rebase --interactive "$(git_main_branch)"'
-alias grbiom='git fetch origin "$(git_main_branch):$(git_main_branch)" && git rebase --interactive "$(git_main_branch)"'
+function grbiom() {
+  local base
+  base=$(git_main_branch) || return
+  command git fetch --no-tags origin "refs/heads/${base}:refs/remotes/origin/$base" || return
+  command git rebase --interactive "origin/$base"
+}
 alias gr='git reset'
 alias gr!='git reset --hard'
 alias gs='git status'
