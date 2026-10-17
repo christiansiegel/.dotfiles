@@ -56,6 +56,14 @@ export KUBECONFIG="$HOME/.kube/uconfig"
 Without a local override, Kubernetes uses its normal configuration lookup.
 Machine-specific executable directories can also be added to `PATH` here.
 
+## Validation
+
+Run `make check` from this repository before committing shell changes.
+It requires Zsh and Make, checks shell syntax, and loads the configuration
+twice with a temporary home to check startup and reload without personal
+plugins, NVM, or local overrides. System-installed plugins can still load.
+Arcanist is stubbed during validation to avoid changing its configuration.
+
 ## Adding new files to the project
 
 ```sh
