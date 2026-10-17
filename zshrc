@@ -111,6 +111,7 @@ function grbiom() {
 alias gr='git reset'
 alias gr!='git reset --hard'
 alias gs='git status'
+alias gsf='git status -sb -uno --no-ahead-behind'
 
 function cdgr() {
   local root
