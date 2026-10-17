@@ -5,7 +5,7 @@ HISTFILE="$HOME/.zsh_history"
 HISTSIZE=100000
 SAVEHIST=100000
 
-EDITOR=vim
+export EDITOR=vim
 
 setopt extended_history
 setopt hist_expire_dups_first
@@ -31,7 +31,7 @@ else
 fi
 
 # git
-GIT_EDITOR=VIM
+export GIT_EDITOR="$EDITOR"
 
 alias g='git'
 alias ga='git add'
