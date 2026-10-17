@@ -90,8 +90,15 @@ function current_branch() {
 
 function git_main_branch() {
   command git rev-parse --git-dir &>/dev/null || return
-  local ref
-  for ref in refs/{heads,remotes/{origin,upstream}}/{master,trunk}; do
+  local remote ref
+  for remote in origin upstream; do
+    ref=$(command git symbolic-ref --quiet "refs/remotes/$remote/HEAD") || continue
+    if command git show-ref -q --verify "$ref"; then
+      print -r -- "${ref#refs/remotes/$remote/}"
+      return
+    fi
+  done
+  for ref in refs/{heads,remotes/{origin,upstream}}/{main,master,trunk}; do
     if command git show-ref -q --verify $ref; then
       echo ${ref:t}
       return
