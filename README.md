@@ -83,7 +83,7 @@ Check the installation with `command -v nvm`, `node --version`, and
 ## Machine-specific settings
 
 Put settings that vary between machines in `~/.zshrc.local`. The shared
-`.zshrc` loads this optional file last, so it can override shared settings.
+`.zshrc` loads this optional file after shared settings, so it can override them.
 Keep it outside this repository and do not add it with `mkrc`.
 
 For example, select a machine-specific Kubernetes configuration:
@@ -94,6 +94,11 @@ export KUBECONFIG="$HOME/.kube/uconfig"
 
 Without a local override, Kubernetes uses its normal configuration lookup.
 Machine-specific executable directories can also be added to `PATH` here.
+
+Set `EDITOR` here to choose an editor for this machine. Git uses it unless
+`GIT_EDITOR` or Git's `core.editor` selects a different editor. Arcanist's
+editor is configured automatically after this file loads, using the final
+`EDITOR` value. This setup still runs each time a shell starts.
 
 ## Validation
 
