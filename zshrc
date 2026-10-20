@@ -293,6 +293,7 @@ if [[ -r "$NVM_DIR/bash_completion" ]]; then
 fi
 
 # user-installed executables
+path=("$HOME/.local/bin" $path)
 if [[ -r "$HOME/.local/bin/env" ]]; then
   source "$HOME/.local/bin/env"
 fi
