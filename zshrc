@@ -308,6 +308,10 @@ if [[ -r "$HOME/.local/bin/env" ]]; then
   source "$HOME/.local/bin/env"
 fi
 
+# Keep Ctrl-R history search available in both shell editing modes.
+bindkey -M emacs '^R' history-incremental-search-backward
+bindkey -M viins '^R' history-incremental-search-backward
+
 # machine-specific settings
 if [[ -r "$HOME/.zshrc.local" ]]; then
   source "$HOME/.zshrc.local"
