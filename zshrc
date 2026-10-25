@@ -59,6 +59,8 @@ function dotfiles() {
 # @topic Shell
 # @doc Reload the shell configuration.
 alias zsh_reload='source "$HOME/.zshrc"'
+# @doc Reload the shell configuration.
+alias zsh-reload='zsh_reload'
 
 HISTFILE="$HOME/.zsh_history"
 HISTSIZE=100000
@@ -249,6 +251,10 @@ function git_repo_root() {
   command git rev-parse --show-toplevel
 }
 
+# @topic Review
+# @doc Open tuicr in a tmux popup at 95% width and height.
+alias tcr='tmux display-popup -E -w 95% -h 95% -d "$PWD" tuicr'
+
 # @topic Arcanist
 # @doc Create or update an Arcanist diff.
 alias ard='arc diff'
@@ -280,8 +286,12 @@ alias gzc='gazelle && (cdgr && git add "**/BUILD.bazel") && git commit -m "gazel
 alias cddot='cd "$HOME/.dotfiles"'
 # @doc Push existing dotfile commits without staging or committing changes.
 alias push_dotfiles='(cddot && gpo)'
+# @doc Push existing dotfile commits without staging or committing changes.
+alias push-dotfiles='push_dotfiles'
 # @doc Pull dotfiles, force relinking, and reload the shell configuration.
 alias pull_dotfiles='(cddot && gcom && gpr) && (cd "$HOME" && rcup -vf rcrc && rcup -vf) && zsh_reload'
+# @doc Pull dotfiles, force relinking, and reload the shell configuration.
+alias pull-dotfiles='pull_dotfiles'
 
 # nvm
 export NVM_DIR="$HOME/.config/nvm"
