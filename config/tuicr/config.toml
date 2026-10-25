@@ -1,0 +1,21 @@
+# Configuration reference: https://github.com/agavra/tuicr/blob/v0.27.0/docs/CONFIG.md
+theme = "catppuccin-mocha"
+appearance = "dark"
+diff_view = "side-by-side"
+ignore_whitespace = false # Show whitespace changes, matching GitHub defaults.
+show_pr_checks = true
+transparent_background = false
+show_file_list = true
+mouse = true
+leader = ";"
+wrap = false
+
+# Use the shell's $EDITOR (configured in zshrc) unless overridden here.
+# editor = "vim"
+
+comment_types = [
+  { id = "nit", color = "#a6adc8", definition = "minor optional polish" },
+  { id = "blocker", color = "#f38ba8", definition = "must fix before merge" },
+  { id = "suggestion", color = "#a6e3a1", definition = "proposed improvement to consider" },
+  { id = "question", color = "#89b4fa", definition = "ask for clarification" },
+]
