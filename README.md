@@ -71,6 +71,16 @@ The script downloads the preset if missing and reuses it on later runs. It is
 stored in `$XDG_DATA_HOME/xfce4/terminal/colorschemes`, defaulting to
 `~/.local/share/xfce4/terminal/colorschemes`.
 
+### tmux status bar colors
+
+`rcup -v` links `tmux.conf` to `~/.tmux.conf`. It applies Catppuccin Mocha
+colors to the status bar and highlights the active window in mauve. New tmux
+servers load it automatically. Reload it in an existing tmux session with:
+
+```sh
+tmux source-file ~/.tmux.conf
+```
+
 ### Optional Node.js setup
 
 The shared configuration loads [NVM][] from `~/.config/nvm` on Linux and
