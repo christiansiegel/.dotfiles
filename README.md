@@ -54,6 +54,23 @@ Pure and [zsh-syntax-highlighting][] are optional; startup skips them when
 not installed. For a matching terminal color scheme, optionally install
 [Snazzy](https://github.com/sindresorhus/iterm2-snazzy).
 
+### Xfce Terminal colors (Linux)
+
+Apply the official [Catppuccin Mocha preset](https://github.com/catppuccin/xfce4-terminal)
+from an Xfce desktop session (requires `curl` and `xfconf-query`):
+
+```sh
+sh ~/.dotfiles/scripts/apply-terminal-theme.sh
+```
+
+The script applies the preset through `xfconf-query`, including foreground,
+background, cursor, selection, and the 16-color palette. It disables desktop
+theme colors so the palette takes effect. Other terminal preferences are kept.
+You can also select **Catppuccin-Mocha** in Terminal Preferences → Colors → Presets.
+The script downloads the preset if missing and reuses it on later runs. It is
+stored in `$XDG_DATA_HOME/xfce4/terminal/colorschemes`, defaulting to
+`~/.local/share/xfce4/terminal/colorschemes`.
+
 ### Optional Node.js setup
 
 The shared configuration loads [NVM][] from `~/.config/nvm` on Linux and
