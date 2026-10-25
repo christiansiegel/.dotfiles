@@ -51,8 +51,8 @@ The shell configuration supports both Apple Silicon and Intel Homebrew paths.
 1. Open a new terminal, or start Zsh with `zsh`.
 
 Pure and [zsh-syntax-highlighting][] are optional; startup skips them when
-not installed. For a matching terminal color scheme, optionally install
-[Snazzy](https://github.com/sindresorhus/iterm2-snazzy).
+not installed. The terminal theme setup below uses Catppuccin Mocha to match
+tuicr and tmux.
 
 ### Xfce Terminal colors (Linux)
 
@@ -70,6 +70,22 @@ You can also select **Catppuccin-Mocha** in Terminal Preferences → Colors → 
 The script downloads the preset if missing and reuses it on later runs. It is
 stored in `$XDG_DATA_HOME/xfce4/terminal/colorschemes`, defaulting to
 `~/.local/share/xfce4/terminal/colorschemes`.
+
+### iTerm2 colors (macOS)
+
+Download the official [Catppuccin Mocha preset](https://github.com/catppuccin/iterm)
+(requires `curl`):
+
+```sh
+sh ~/.dotfiles/scripts/install-iterm2-theme.sh
+```
+
+The script downloads the preset if missing and reuses it on later runs, storing
+it in `$XDG_DATA_HOME/iterm2/colors` (default `~/.local/share/iterm2/colors`).
+In iTerm2 **Settings → Profiles → your profile → Colors → Color Presets → Import**,
+select the downloaded `catppuccin-mocha.itermcolors` file. Use **Cmd-Shift-G**
+in the file picker to enter the path printed by the script. Then choose
+**catppuccin-mocha** from Color Presets to apply it to that profile.
 
 ### tmux status bar colors
 
