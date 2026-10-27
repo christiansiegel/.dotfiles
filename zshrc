@@ -62,6 +62,9 @@ alias zsh_reload='source "$HOME/.zshrc"'
 # @doc Reload the shell configuration.
 alias zsh-reload='zsh_reload'
 
+# @doc Reload the tmux configuration in the running server.
+alias tmux-reload='tmux source-file "$HOME/.tmux.conf"'
+
 HISTFILE="$HOME/.zsh_history"
 HISTSIZE=100000
 SAVEHIST=100000

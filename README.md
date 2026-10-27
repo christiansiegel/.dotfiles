@@ -94,7 +94,7 @@ colors to the status bar and highlights the active window in mauve. New tmux
 servers load it automatically. Reload it in an existing tmux session with:
 
 ```sh
-tmux source-file ~/.tmux.conf
+tmux-reload
 ```
 
 ### Optional Node.js setup
